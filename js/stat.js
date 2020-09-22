@@ -71,6 +71,7 @@ window.renderStatistics = function (ctx, players, times) {
   ];
 
   const maxTime = getMaxElement(times);
+  players.sort();
 
   for (let i = 0; i < players.length; i++) {
     // deltaTime in range from 0 to 1
@@ -84,6 +85,7 @@ window.renderStatistics = function (ctx, players, times) {
     const TEXT_Y = GAP + BAR_MAX_HEIGHT + (3 * FONT_GAP);
 
     ctx.fillStyle = `rgba(0, 0, 0, 1)`;
+
     ctx.fillText(
         `${playerScore}`,
         TEXT_X,
