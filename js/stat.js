@@ -63,24 +63,24 @@ window.renderStatistics = function (ctx, players, times) {
       FONT_GAP * 3
   );
 
-  let palyersColor = [
+  const palyersColor = [
     `rgba(255, 0, 0, 1)`,
     `rgba(2, 14, 134, 1)`,
     `rgba(2, 14, 134, 0.2)`,
     `rgba(2, 14, 134, 0.6)`
   ];
 
-  let maxTime = getMaxElement(times);
+  const maxTime = getMaxElement(times);
 
   for (let i = 0; i < players.length; i++) {
     // deltaTime in range from 0 to 1
     const BAR_X = CLOUD_X + ((i + 1) * GAP) + (i * BAR_WIDTH);
-    let deltaTime = 1 - (times[i] / maxTime);
-    let barY = BAR_MAX_Y + (BAR_MAX_HEIGHT * deltaTime);
-    let barHeight = BAR_MAX_HEIGHT - (BAR_MAX_HEIGHT * deltaTime);
-    let playerScore = Math.round(barHeight * 26.833);
+    const deltaTime = 1 - (times[i] / maxTime);
+    const barY = BAR_MAX_Y + (BAR_MAX_HEIGHT * deltaTime);
+    const barHeight = BAR_MAX_HEIGHT - (BAR_MAX_HEIGHT * deltaTime);
+    const playerScore = Math.round(barHeight * 26.833);
     const TEXT_X = CLOUD_X + ((i + 1) * GAP) + (i * TEXT_WIDTH);
-    let textY = barY - CLOUD_Y;
+    const textY = barY - CLOUD_Y;
     const TEXT_Y = GAP + BAR_MAX_HEIGHT + (3 * FONT_GAP);
 
     ctx.fillStyle = `rgba(0, 0, 0, 1)`;
