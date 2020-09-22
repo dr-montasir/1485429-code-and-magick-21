@@ -14,11 +14,6 @@ const BAR_MAX_Y = CLOUD_Y + (FONT_GAP * 4);
 // BAR_MAX_HEIGHT = 150
 const BAR_MAX_HEIGHT = CLOUD_HEIGHT - (FONT_GAP * 6);
 
-// from 90 to 240  (range = 150)
-const BAR_Y = BAR_MAX_Y + 0;
-// from 150 to 0 (range = 150)
-let barHeight = BAR_MAX_HEIGHT - 0;
-
 const renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
@@ -30,7 +25,19 @@ const renderShadow = function (ctx, x, y, width, height, shadowWidth, color) {
   ctx.strokeRect(x, y, width, height);
 };
 
-window.renderStatistics = function (ctx, players) {
+const getMaxElement = function (arr) {
+  let maxElement = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > maxElement) {
+      maxElement = arr[i];
+    }
+  }
+
+  return maxElement;
+};
+
+window.renderStatistics = function (ctx, players, times) {
   renderShadow(ctx, 110, 20, 420, 269, 1, `rgba(0, 0, 0, 1)`);
   renderShadow(ctx, 115, 25, 410, 260, 10, `rgba(0, 0, 0, 0.7)`);
   renderShadow(ctx, 99, 9, 421, 271, 1, `rgba(174, 180, 205, 1)`);
@@ -63,22 +70,34 @@ window.renderStatistics = function (ctx, players) {
     `rgba(2, 14, 134, 0.6)`
   ];
 
+  let maxTime = getMaxElement(times);
+
   for (let i = 0; i < players.length; i++) {
+    // deltaTime in range from 0 to 1
+    const BAR_X = CLOUD_X + ((i + 1) * GAP) + (i * BAR_WIDTH);
+    let deltaTime = 1 - (times[i] / maxTime);
+    let barY = BAR_MAX_Y + (BAR_MAX_HEIGHT * deltaTime);
+    let barHeight = BAR_MAX_HEIGHT - (BAR_MAX_HEIGHT * deltaTime);
+    let playerScore = Math.round(barHeight * 26.833);
+    const TEXT_X = CLOUD_X + ((i + 1) * GAP) + (i * TEXT_WIDTH);
+    let textY = barY - CLOUD_Y;
+    const TEXT_Y = GAP + BAR_MAX_HEIGHT + (3 * FONT_GAP);
+
     ctx.fillStyle = `rgba(0, 0, 0, 1)`;
     ctx.fillText(
-        `${barHeight * 10}`,
-        CLOUD_X + ((i + 1) * GAP) + (i * TEXT_WIDTH),
-        BAR_Y - CLOUD_Y
+        `${playerScore}`,
+        TEXT_X,
+        textY
     );
     ctx.fillText(
         players[i],
-        CLOUD_X + ((i + 1) * GAP) + (i * TEXT_WIDTH),
-        GAP + BAR_MAX_HEIGHT + (3 * FONT_GAP)
+        TEXT_X,
+        TEXT_Y
     );
     ctx.fillStyle = palyersColor[i];
     ctx.fillRect(
-        CLOUD_X + ((i + 1) * GAP) + (i * BAR_WIDTH),
-        BAR_Y,
+        BAR_X,
+        barY,
         BAR_WIDTH,
         barHeight
     );
