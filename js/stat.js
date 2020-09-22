@@ -30,7 +30,7 @@ const renderShadow = function (ctx, x, y, width, height, shadowWidth, color) {
   ctx.strokeRect(x, y, width, height);
 };
 
-window.renderStatistics = function (ctx) {
+window.renderStatistics = function (ctx, players) {
   renderShadow(ctx, 110, 20, 420, 269, 1, `rgba(0, 0, 0, 1)`);
   renderShadow(ctx, 115, 25, 410, 260, 10, `rgba(0, 0, 0, 0.7)`);
   renderShadow(ctx, 99, 9, 421, 271, 1, `rgba(174, 180, 205, 1)`);
@@ -56,7 +56,6 @@ window.renderStatistics = function (ctx) {
       FONT_GAP * 3
   );
 
-  let players = [`Вы`, `Кекс`, `Катя`, `Игорь`];
   let palyersColor = [
     `rgba(255, 0, 0, 1)`,
     `rgba(2, 14, 134, 1)`,
