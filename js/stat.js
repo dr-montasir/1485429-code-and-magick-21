@@ -3,7 +3,7 @@
 const CLOUD_WIDTH = 420;
 const CLOUD_HEIGHT = 270;
 
-const CLOUD_X = 100;
+const CLOUD_X = 145;
 const CLOUD_Y = 10;
 const GAP = 50;
 const FONT_GAP = 20;
@@ -38,10 +38,10 @@ const getMaxElement = function (arr) {
 };
 
 window.renderStatistics = function (ctx, players, times) {
-  renderShadow(ctx, 110, 20, 420, 269, 1, `rgba(0, 0, 0, 1)`);
-  renderShadow(ctx, 115, 25, 410, 260, 10, `rgba(0, 0, 0, 0.7)`);
-  renderShadow(ctx, 99, 9, 421, 271, 1, `rgba(174, 180, 205, 1)`);
-  renderShadow(ctx, 98, 8, 423, 273, 1, `rgba(54, 73, 156, 1)`);
+  renderShadow(ctx, 155, 20, 420, 269, 1, `rgba(0, 0, 0, 1)`);
+  renderShadow(ctx, 160, 25, 410, 260, 10, `rgba(0, 0, 0, 0.7)`);
+  renderShadow(ctx, 144, 9, 421, 271, 1, `rgba(174, 180, 205, 1)`);
+  renderShadow(ctx, 143, 8, 423, 273, 1, `rgba(54, 73, 156, 1)`);
 
   renderCloud(
       ctx,
