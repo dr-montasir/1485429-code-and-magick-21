@@ -15,9 +15,9 @@ const BAR_MAX_Y = CLOUD_Y + (FONT_GAP * 4);
 const BAR_MAX_HEIGHT = CLOUD_HEIGHT - (FONT_GAP * 6);
 
 // from 90 to 240  (range = 150)
-const BAR_Y = BAR_MAX_Y + 100;
+const BAR_Y = BAR_MAX_Y + 0;
 // from 150 to 0 (range = 150)
-const BAR_HEIGHT = BAR_MAX_HEIGHT - 100;
+const BAR_HEIGHT = BAR_MAX_HEIGHT - 0;
 
 const renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -56,14 +56,18 @@ window.renderStatistics = function (ctx) {
       FONT_GAP * 3
   );
 
+  let playerIndex = 0;
+  let playerName = `Вы`;
+  // let players = [`Вы`, `Кекс`, `Катя`, `Игорь`];
+
   ctx.fillText(
       `${BAR_HEIGHT * 10}`,
-      CLOUD_X + (1 * GAP) + (0 * TEXT_WIDTH),
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * TEXT_WIDTH),
       BAR_Y - CLOUD_Y
   );
   ctx.fillText(
-      `Вы`,
-      CLOUD_X + (1 * GAP) + (0 * TEXT_WIDTH),
+      playerName,
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * TEXT_WIDTH),
       GAP + BAR_MAX_HEIGHT + (3 * FONT_GAP)
   );
   ctx.fillStyle = `rgba(255, 0, 0, 1)`;
@@ -78,64 +82,73 @@ window.renderStatistics = function (ctx) {
       // 40,
       // 150,
       //
-      CLOUD_X + (1 * GAP) + (0 * BAR_WIDTH),
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * BAR_WIDTH),
       BAR_Y,
       BAR_WIDTH,
       BAR_HEIGHT
   );
 
+  playerIndex = 1;
+  playerName = `Кекс`;
+
   ctx.fillStyle = `rgba(0, 0, 0, 1)`;
   ctx.fillText(
       `${BAR_HEIGHT * 10}`,
-      CLOUD_X + (2 * GAP) + (1 * TEXT_WIDTH),
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * TEXT_WIDTH),
       BAR_Y - CLOUD_Y
   );
   ctx.fillText(
-      `Кекс`,
-      CLOUD_X + (2 * GAP) + (1 * TEXT_WIDTH),
+      playerName,
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * TEXT_WIDTH),
       GAP + BAR_MAX_HEIGHT + (3 * FONT_GAP)
   );
   ctx.fillStyle = `rgba(2, 14, 134, 1)`;
   ctx.fillRect(
-      CLOUD_X + (2 * GAP) + (1 * BAR_WIDTH),
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * BAR_WIDTH),
       BAR_Y,
       BAR_WIDTH,
       BAR_HEIGHT
   );
 
+  playerIndex = 2;
+  playerName = `Катя`;
+
   ctx.fillStyle = `rgba(0, 0, 0, 1)`;
   ctx.fillText(
       `${BAR_HEIGHT * 10}`,
-      CLOUD_X + (3 * GAP) + (2 * TEXT_WIDTH),
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * TEXT_WIDTH),
       BAR_Y - CLOUD_Y
   );
   ctx.fillText(
-      `Катя`,
-      CLOUD_X + (3 * GAP) + (2 * TEXT_WIDTH),
+      playerName,
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * TEXT_WIDTH),
       GAP + BAR_MAX_HEIGHT + (3 * FONT_GAP)
   );
   ctx.fillStyle = `rgba(2, 14, 134, 0.2)`;
   ctx.fillRect(
-      CLOUD_X + (3 * GAP) + (2 * BAR_WIDTH),
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * BAR_WIDTH),
       BAR_Y,
       BAR_WIDTH,
       BAR_HEIGHT
   );
 
+  playerIndex = 3;
+  playerName = `Игорь`;
+
   ctx.fillStyle = `rgba(0, 0, 0, 1)`;
   ctx.fillText(
       `${BAR_HEIGHT * 10}`,
-      CLOUD_X + (4 * GAP) + (3 * TEXT_WIDTH),
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * TEXT_WIDTH),
       BAR_Y - CLOUD_Y
   );
   ctx.fillText(
-      `Игорь`,
-      CLOUD_X + (4 * GAP) + (3 * TEXT_WIDTH),
+      playerName,
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * TEXT_WIDTH),
       GAP + BAR_MAX_HEIGHT + (3 * FONT_GAP)
   );
   ctx.fillStyle = `rgba(2, 14, 134, 0.6)`;
   ctx.fillRect(
-      CLOUD_X + (4 * GAP) + (3 * BAR_WIDTH),
+      CLOUD_X + ((playerIndex + 1) * GAP) + (playerIndex * BAR_WIDTH),
       BAR_Y,
       BAR_WIDTH,
       BAR_HEIGHT
