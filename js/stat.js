@@ -71,7 +71,13 @@ window.renderStatistics = function (ctx, players, times) {
   ];
 
   const maxTime = getMaxElement(times);
-  players.sort();
+  players.sort((a, b) => {
+    if (a === `Вы`) {
+      return -100;
+    } else {
+      return a - b;
+    }
+  });
 
   for (let i = 0; i < players.length; i++) {
     // deltaTime in range from 0 to 1
@@ -96,7 +102,9 @@ window.renderStatistics = function (ctx, players, times) {
         TEXT_X,
         TEXT_Y
     );
+
     ctx.fillStyle = palyersColor[i];
+
     ctx.fillRect(
         BAR_X,
         barY,
