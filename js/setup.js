@@ -1,1 +1,4 @@
-const setup = document.querySelector(".setup");
+'use strict';
+
+const userDialog = document.querySelector(`.setup`);
+userDialog.classList.remove(`hidden`);
