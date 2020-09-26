@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Монтасир  Миргхани](https://up.htmlacademy.ru/javascript/21/user/1485429).
-* Наставник: [Артик Ман](https://htmlacademy.ru/profile/id1445657).
+* Наставник: [Алексей Хапов](https://htmlacademy.ru/profile/id118459).
 
 ---
 
