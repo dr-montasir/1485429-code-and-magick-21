@@ -1,16 +1,5 @@
 'use strict';
 
-const userDialog = document.querySelector(`.setup`);
-userDialog.classList.remove(`hidden`);
-
-document.querySelector(`.setup-similar`).classList.remove(`hidden`);
-const similarListElement = document
-    .querySelector(`.setup-similar-list`);
-const similarWizardTemplate = document
-    .querySelector(`#similar-wizard-template`)
-    .content
-    .querySelector(`.setup-similar-item`);
-
 const WIZARD_NAMES = [
   `Иван`,
   `Хуан Себастьян`,
@@ -52,6 +41,17 @@ const EYES_COLOR = [
 
 const NUMBER_OF_WIZARDS = 4;
 
+const userDialog = document.querySelector(`.setup`);
+userDialog.classList.remove(`hidden`);
+
+document.querySelector(`.setup-similar`).classList.remove(`hidden`);
+const similarListElement = document
+    .querySelector(`.setup-similar-list`);
+const similarWizardTemplate = document
+    .querySelector(`#similar-wizard-template`)
+    .content
+    .querySelector(`.setup-similar-item`);
+
 // The value is no lower and is less than (but not equal to) max.
 const getRandomInt = (min = 0, max = 100) => {
   min = Math.ceil(min);
@@ -60,8 +60,8 @@ const getRandomInt = (min = 0, max = 100) => {
 };
 
 const createWizard = () => ({
-  name: `${WIZARD_NAMES[getRandomInt(0, WIZARD_NAMES.length - 1)]}`,
-  surname: `${WIZARD_SURNAMES[getRandomInt(0, WIZARD_SURNAMES.length - 1)]}`,
+  name: WIZARD_NAMES[getRandomInt(0, WIZARD_NAMES.length - 1)],
+  surname: WIZARD_SURNAMES[getRandomInt(0, WIZARD_SURNAMES.length - 1)],
   coatColor: COAT_COLOR[getRandomInt(0, COAT_COLOR.length - 1)],
   eyesColor: EYES_COLOR[getRandomInt(0, EYES_COLOR.length - 1)]
 });
@@ -78,7 +78,7 @@ const getWizards = () => {
 
 const renderWizard = (wizard) => {
   const wizardElement = similarWizardTemplate.cloneNode(true);
-  wizardElement.querySelector(`.setup-similar-label`).textContent = wizard.name + ` ` + wizard.surname;
+  wizardElement.querySelector(`.setup-similar-label`).textContent = `${wizard.name + ` ` + wizard.surname}`;
   wizardElement.querySelector(`.wizard-coat`).style.fill = wizard.coatColor;
   wizardElement.querySelector(`.wizard-eyes`).style.fill = wizard.eyesColor;
 
