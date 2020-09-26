@@ -52,12 +52,21 @@ const EYES_COLOR = [
 
 const NUMBER_OF_WIZARDS = 4;
 
-for (let i = 0; i < NUMBER_OF_WIZARDS; i++) {
-  const wizardElement = similarWizardTemplate.cloneNode(true);
+// The value is no lower and is less than (but not equal to) max.
+const getRandomInt = (min = 0, max = 100) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
 
-  wizardElement.querySelector(`.setup-similar-label`).textContent = WIZARD_NAMES[i] + ` ` + WIZARD_SURNAMES[i];
-  wizardElement.querySelector(`.wizard-coat`).style.fill = COAT_COLOR[i];
-  wizardElement.querySelector(`.wizard-eyes`).style.fill = EYES_COLOR[i];
+console.log(getRandomInt());
 
-  similarListElement.appendChild(wizardElement);
-}
+// for (let i = 0; i < NUMBER_OF_WIZARDS; i++) {
+//   const wizardElement = similarWizardTemplate.cloneNode(true);
+
+//   wizardElement.querySelector(`.setup-similar-label`).textContent = WIZARD_NAMES[i] + ` ` + WIZARD_SURNAMES[i];
+//   wizardElement.querySelector(`.wizard-coat`).style.fill = COAT_COLOR[i];
+//   wizardElement.querySelector(`.wizard-eyes`).style.fill = EYES_COLOR[i];
+
+//   similarListElement.appendChild(wizardElement);
+// }
