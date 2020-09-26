@@ -59,14 +59,40 @@ const getRandomInt = (min = 0, max = 100) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-console.log(getRandomInt());
+const createWizard = () => ({
+  name: `${WIZARD_NAMES[getRandomInt(0, WIZARD_NAMES.length - 1)]}`,
+  surname: `${WIZARD_SURNAMES[getRandomInt(0, WIZARD_SURNAMES.length - 1)]}`,
+  coatColor: COAT_COLOR[getRandomInt(0, COAT_COLOR.length - 1)],
+  eyesColor: EYES_COLOR[getRandomInt(0, EYES_COLOR.length - 1)]
+});
 
-// for (let i = 0; i < NUMBER_OF_WIZARDS; i++) {
-//   const wizardElement = similarWizardTemplate.cloneNode(true);
+const getWizards = () => {
+  const wizards = [];
 
-//   wizardElement.querySelector(`.setup-similar-label`).textContent = WIZARD_NAMES[i] + ` ` + WIZARD_SURNAMES[i];
-//   wizardElement.querySelector(`.wizard-coat`).style.fill = COAT_COLOR[i];
-//   wizardElement.querySelector(`.wizard-eyes`).style.fill = EYES_COLOR[i];
+  for (let i = 0; i < NUMBER_OF_WIZARDS; i++) {
+    wizards.push(createWizard());
+  }
 
-//   similarListElement.appendChild(wizardElement);
-// }
+  return wizards;
+};
+
+const renderWizard = (wizard) => {
+  const wizardElement = similarWizardTemplate.cloneNode(true);
+  wizardElement.querySelector(`.setup-similar-label`).textContent = wizard.name + ` ` + wizard.surname;
+  wizardElement.querySelector(`.wizard-coat`).style.fill = wizard.coatColor;
+  wizardElement.querySelector(`.wizard-eyes`).style.fill = wizard.eyesColor;
+
+  return wizardElement;
+};
+
+const renderWizards = (wizards) => {
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < wizards.length; i++) {
+    fragment.appendChild(renderWizard(wizards[i]));
+  }
+
+  return fragment;
+};
+
+similarListElement.appendChild(renderWizards(getWizards()));
