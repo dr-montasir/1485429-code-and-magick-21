@@ -52,7 +52,7 @@ const similarWizardTemplate = document
     .content
     .querySelector(`.setup-similar-item`);
 
-// The value is no lower and is less than (but not equal to) max.
+// The value is no lower min and is less than (but not equal to) max.
 const getRandomInt = (min = 0, max = 100) => {
   min = Math.ceil(min);
   max = Math.floor(max);

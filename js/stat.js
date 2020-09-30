@@ -14,18 +14,18 @@ const BAR_MAX_Y = CLOUD_Y + (FONT_GAP * 4);
 // BAR_MAX_HEIGHT = 150
 const BAR_MAX_HEIGHT = CLOUD_HEIGHT - (FONT_GAP * 6);
 
-const renderCloud = function (ctx, x, y, color) {
+const renderCloud = (ctx, x, y, color) => {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
-const renderShadow = function (ctx, x, y, width, height, shadowWidth, color) {
+const renderShadow = (ctx, x, y, width, height, shadowWidth, color) => {
   ctx.strokeStyle = color;
   ctx.lineWidth = shadowWidth;
   ctx.strokeRect(x, y, width, height);
 };
 
-const getMaxElement = function (arr) {
+const getMaxElement = (arr) => {
   let maxElement = arr[0];
 
   for (let i = 1; i < arr.length; i++) {
@@ -37,7 +37,7 @@ const getMaxElement = function (arr) {
   return maxElement;
 };
 
-window.renderStatistics = function (ctx, players, times) {
+window.renderStatistics = (ctx, players, times) => {
   renderShadow(ctx, 155, 20, 420, 269, 1, `rgba(0, 0, 0, 1)`);
   renderShadow(ctx, 160, 25, 410, 260, 10, `rgba(0, 0, 0, 0.7)`);
   renderShadow(ctx, 144, 9, 421, 271, 1, `rgba(174, 180, 205, 1)`);
