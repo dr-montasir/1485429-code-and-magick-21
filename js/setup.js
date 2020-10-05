@@ -97,6 +97,7 @@ const renderWizards = (wizards) => {
 
 similarListElement.appendChild(renderWizards(getWizards()));
 
+// module4-task1
 const setupOpen = document.querySelector(`.setup-open`);
 const setup = document.querySelector(`.setup`);
 const setupClose = setup.querySelector(`.setup-close`);
